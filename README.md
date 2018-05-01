@@ -11,7 +11,7 @@ This software is released under the MIT License, see LICENSE.txt.
 To download, click the "Download ZIP" button, and specify the zip file
 from the "Sketch > Include Library > Add .ZIP Library" menu in the Arduino IDE.
 
-You also need to install "Adafruit_GFX_Library" from the "Library > Manage Libraries" menu.
+You also need to install [Adafruit_GFX_Library](https://github.com/adafruit/Adafruit-GFX-Library) from the "Library > Manage Libraries" menu.
 
 ## Patching GPIO to avoid eratta of ESP32
 
