@@ -1,6 +1,6 @@
 # P3RGB64x32MatrixPanel library for ESP32
 
-ESP32 Arduino library for P3 64x32 RGB LED Matrix Panel (available at https://amzn.to/2jlqX1q ).
+ESP32 Arduino library for P3 64x32 RGB LED Matrix Panel (available at https://www.amazon.com/dp/B079JSKF21/ o r https://amzn.to/2jlqX1q (Amazon Japan) ).
 
 [![DEMO](http://img.youtube.com/vi/5Z31kwsd-1I/0.jpg)](http://www.youtube.com/watch?v=5Z31kwsd-1I)
 
