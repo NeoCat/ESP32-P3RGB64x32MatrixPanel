@@ -1,8 +1,14 @@
 # P3RGB64x32MatrixPanel library for ESP32
 
-ESP32 Arduino library for P3 64x32 RGB LED Matrix Panel (available at https://www.amazon.com/dp/B079JSKF21/ or https://amzn.to/2jlqX1q (Amazon Japan) ).
+ESP32 Arduino library for P3 64x32 RGB LED Matrix Panel.
+
+The panel is available at:
+- https://www.amazon.com/dp/B079JSKF21/
+- https://amzn.to/2jlqX1q (Amazon Japan)
+etc.
 
 [![DEMO](http://img.youtube.com/vi/5Z31kwsd-1I/0.jpg)](http://www.youtube.com/watch?v=5Z31kwsd-1I)
+(Click to play the video)
 
 This software is released under the MIT License, see LICENSE.txt.
 
@@ -24,7 +30,7 @@ PROVIDE ( GPIO = 0x60004000 );
 
 Please refer section 3.3. in https://www.espressif.com/sites/default/files/documentation/eco_and_workarounds_for_bugs_in_esp32_en.pdf for more details.
 
-# Connection to ESP32 and the LED Matrix Panel
+# Wiring ESP32 with the LED Matrix Panel
 
 The panel has HUB75 compatible pins.
 
@@ -43,7 +49,7 @@ The panel has HUB75 compatible pins.
 
 The panel must be powered by 5V AC adapter with enough current capacity.
 (Current varies due to how many LED are turned on at the same time.
- To drive all the LED, you need 5V4A adapter.)
+ To drive all the LEDs, you need 5V4A adapter.)
 
 # Usage
 
