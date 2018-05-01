@@ -2,6 +2,8 @@
 
 ESP32 Arduino library for P3 64x32 RGB LED Matrix Panel (available at https://amzn.to/2jlqX1q ).
 
+[![DEMO](http://img.youtube.com/vi/5Z31kwsd-1I/0.jpg)](http://www.youtube.com/watch?v=5Z31kwsd-1I)
+
 This software is released under the MIT License, see LICENSE.txt.
 
 # Installation
