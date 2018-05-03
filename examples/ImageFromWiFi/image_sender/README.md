@@ -1,6 +1,7 @@
 # Setup
 
 ```
+brew install imagemagick
 bundle install
 ```
 
