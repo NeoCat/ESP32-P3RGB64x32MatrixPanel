@@ -80,13 +80,13 @@ void P3RGB64x32MatrixPanel::drawPixel(int16_t x, int16_t y, uint16_t color) {
 }
 
 void P3RGB64x32MatrixPanel::draw() {
-  static byte cnt = 31;
+  static byte cnt = 30;
   static byte y = 15;
   static uint32_t out = 0;
   y = (y + 1) % 16;
 
   if (y == 0)
-    cnt = (cnt + 1) % 32;
+    cnt = (cnt + 1) % 31; // 31 must be skipped
 
   byte cmp = (cnt >> 4) | ((cnt >> 2) & 0x2) | (cnt & 0x4) | ((cnt << 2) & 0x8) | ((cnt << 4) & 0x10);
 
