@@ -17,11 +17,11 @@ pixels = image.get_pixels
 
 sock = TCPSocket.open(ARGV[0], 20032)
 
-(new_height - 31).times do |y0|
+([new_height - 31, 1].max).times do |y0|
   pix = []
   32.times do |y|
     64.times do |x|
-      r, g, b = pixels[y + y0][x].map { |v| v >> 3 }
+      r, g, b = pixels[[y + y0, image.height - 1].min][x].map { |v| v >> 3 }
       c = r | (g << 5) | (b << 10)
       pix << c
     end
