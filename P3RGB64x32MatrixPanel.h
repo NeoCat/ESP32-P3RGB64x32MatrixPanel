@@ -1,8 +1,14 @@
+#include <vector>
+#include <array>
 #include "Adafruit_GFX.h"
 
 class P3RGB64x32MatrixPanel : public Adafruit_GFX {
   public:
-    P3RGB64x32MatrixPanel() : Adafruit_GFX(64, 32), matrixbuff({}) {}
+    P3RGB64x32MatrixPanel(bool _doubleBuffer = false)
+      : Adafruit_GFX(64, 32), doubleBuffer(_doubleBuffer) {
+      _matrixbuff.resize(doubleBuffer ? 2 : 1);
+      matrixbuff = _matrixbuff[0].data();
+    }
     void begin(void);
     virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
 
@@ -10,12 +16,27 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
     uint16_t color555(uint8_t r, uint8_t g, uint8_t b) { return (r&0x1f) | ((uint16_t)(g & 0x1f) << 5) | ((uint16_t)(b & 0x1f) << 10); }
     uint16_t colorHSV(long hue, uint8_t sat, uint8_t val);
 
-    uint16_t matrixbuff[64*32];
+    void swapBuffer() {
+      matrixbuff = drawBuffer();
+    }
+
+    uint16_t* matrixbuff;
+    std::vector<std::array<uint16_t, 64*32>> _matrixbuff;
 
   private:
 
     static void IRAM_ATTR onTimer(void);
     void draw();
+
+    uint16_t* drawBuffer() {
+      if (!doubleBuffer) return _matrixbuff[0].data();
+      if (matrixbuff == _matrixbuff[0].data())
+        return _matrixbuff[1].data();
+      else
+        return _matrixbuff[0].data();
+    }
+
+    bool doubleBuffer;
 
     const int pinR1 = 25;
     const int pinG1 = 26;
