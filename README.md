@@ -38,7 +38,7 @@ The panel has HUB75 compatible pins.
 +---------+   Panel - ESP32 pins
 |  R1 G1  |    R1   - IO25      G1   - IO26
 |  B1 GND |    B1   - IO27
-|  R2 G2  |    R2   - IO21      R2   - IO22
+|  R2 G2  |    R2   - IO21      G2   - IO22
 |  B2 GND |    B2   - IO23
 |   A B   |    A    - IO12      B    - IO16
 |   C D   |    C    - IO17      D    - IO18
