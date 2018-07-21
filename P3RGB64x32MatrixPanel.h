@@ -1,3 +1,6 @@
+#ifndef _ESP32_P3_RGB_64_32_MATRIX_PANEL
+#define _ESP32_P3_RGB_64_32_MATRIX_PANEL
+
 #include <vector>
 #include <array>
 #include "Adafruit_GFX.h"
@@ -57,3 +60,5 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
     static volatile SemaphoreHandle_t timerSemaphore;
     static P3RGB64x32MatrixPanel *singleton;
 };
+
+#endif
