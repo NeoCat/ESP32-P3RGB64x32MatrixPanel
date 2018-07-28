@@ -51,8 +51,8 @@ void loop()
     unsigned int idx = 0;
     while (client.connected()) {
       if (client.available()) {
-        int len = client.read((byte*)matrix.matrixbuff + idx , P3_COLUMNS*P3_ROWS*2 - idx);
-        idx = (idx + len) & (P3_COLUMNS * P3_ROWS * 2 - 1);
+        int len = client.read((byte*)matrix.matrixbuff + idx , 64*32*2 - idx);
+        idx = (idx + len) & (64 * 32 * 2 - 1);
       }
     }
     // close the connection:
