@@ -4,7 +4,12 @@
 #include <Fonts/Picopixel.h>
 #include <P3RGB64x32MatrixPanel.h>
 
+// constructor with default pin wiring
 P3RGB64x32MatrixPanel matrix;
+
+// use this constructor for custom pin wiring instead of the default above
+// these pins are an example, you may modify this according to your needs
+//P3RGB64x32MatrixPanel matrix(25, 26, 27, 21, 22, 23, 15, 32, 33, 12, 16, 17, 18);
 
 char ssid[] = "****SSID****";
 char pass[] = "**PASSWORD**";
@@ -46,8 +51,8 @@ void loop()
     unsigned int idx = 0;
     while (client.connected()) {
       if (client.available()) {
-        int len = client.read((byte*)matrix.matrixbuff + idx , 64*32*2 - idx);
-        idx = (idx + len) & (64 * 32 * 2 - 1);
+        int len = client.read((byte*)matrix.matrixbuff + idx , P3_COLUMNS*P3_ROWS*2 - idx);
+        idx = (idx + len) & (P3_COLUMNS * P3_ROWS * 2 - 1);
       }
     }
     // close the connection:

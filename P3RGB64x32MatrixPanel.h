@@ -7,10 +7,13 @@
 
 class P3RGB64x32MatrixPanel : public Adafruit_GFX {
   public:
+    P3RGB64x32MatrixPanel(uint8_t _pinR1, uint8_t _pinG1, uint8_t _pinB1, uint8_t _pinR2, uint8_t _pinG2, uint8_t _pinB2, uint8_t _pinCLK, uint8_t _pinLAT, uint8_t _pinOE, uint8_t _pinA, uint8_t _pinB, uint8_t _pinC, uint8_t _pinD, bool _doubleBuffer = false)
+      : Adafruit_GFX(64, 32), pinR1(_pinR1), pinG1(_pinG1), pinB1(_pinB1), pinR2(_pinR2), pinG2(_pinG2), pinB2(_pinB2), pinCLK(_pinCLK), pinLAT(_pinLAT), pinOE(_pinOE), pinA(_pinA), pinB(_pinB), pinC(_pinC), pinD(_pinD), doubleBuffer(_doubleBuffer) {
+      initMatrixBuff();
+    }
     P3RGB64x32MatrixPanel(bool _doubleBuffer = false)
       : Adafruit_GFX(64, 32), doubleBuffer(_doubleBuffer) {
-      _matrixbuff.resize(doubleBuffer ? 2 : 1);
-      matrixbuff = _matrixbuff[0].data();
+      initMatrixBuff();
     }
     void begin(void);
     virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
@@ -27,7 +30,10 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
     std::vector<std::array<uint16_t, 64*32>> _matrixbuff;
 
   private:
-
+    void initMatrixBuff() {
+      _matrixbuff.resize(doubleBuffer ? 2 : 1);
+      matrixbuff = _matrixbuff[0].data();
+    }
     static void IRAM_ATTR onTimer(void);
     void draw();
 
@@ -41,21 +47,21 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
 
     bool doubleBuffer;
 
-    const int pinR1 = 25;
-    const int pinG1 = 26;
-    const int pinB1 = 27;
-    const int pinR2 = 21;
-    const int pinG2 = 22;
-    const int pinB2 = 23;
+    uint8_t pinR1 = 25;
+    uint8_t pinG1 = 26;
+    uint8_t pinB1 = 27;
+    uint8_t pinR2 = 21;
+    uint8_t pinG2 = 22;
+    uint8_t pinB2 = 23;
 
-    const int pinCLK = 15;
-    const int pinLAT = 32;
-    const int pinOE = 33;
+    uint8_t pinCLK = 15;
+    uint8_t pinLAT = 32;
+    uint8_t pinOE = 33;
 
-    const int pinA = 12;
-    const int pinB = 16;
-    const int pinC = 17;
-    const int pinD = 18;
+    uint8_t pinA = 12;
+    uint8_t pinB = 16;
+    uint8_t pinC = 17;
+    uint8_t pinD = 18;
 
     static volatile SemaphoreHandle_t timerSemaphore;
     static P3RGB64x32MatrixPanel *singleton;
