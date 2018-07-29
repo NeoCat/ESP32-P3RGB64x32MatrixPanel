@@ -32,7 +32,8 @@ Please refer section 3.3. in https://www.espressif.com/sites/default/files/docum
 
 # Wiring ESP32 with the LED Matrix Panel
 
-The panel has HUB75 compatible pins.
+The panel has HUB75 compatible pins. The library provides two constructors.
+One with default pin wiring like:
 
 ```
 +---------+   Panel - ESP32 pins
@@ -46,6 +47,9 @@ The panel has HUB75 compatible pins.
 |  OE GND |    OE   - IO33
 +---------+
 ```
+
+The second constructor takes each single pin as argument so that you
+may fully customize the pin wiring.
 
 The panel must be powered by 5V AC adapter with enough current capacity.
 (Current varies due to how many LED are turned on at the same time.
