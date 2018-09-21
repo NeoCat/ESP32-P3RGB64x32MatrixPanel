@@ -45,8 +45,6 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
         return _matrixbuff[0].data();
     }
 
-    bool doubleBuffer;
-
     uint8_t pinR1 = 25;
     uint8_t pinG1 = 26;
     uint8_t pinB1 = 27;
@@ -63,6 +61,8 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
     uint8_t pinC = 17;
     uint8_t pinD = 18;
 
+	bool doubleBuffer;
+	
     static volatile SemaphoreHandle_t timerSemaphore;
     static P3RGB64x32MatrixPanel *singleton;
 };
