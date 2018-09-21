@@ -61,8 +61,8 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
     uint8_t pinC = 17;
     uint8_t pinD = 18;
 
-	bool doubleBuffer;
-	
+    bool doubleBuffer;
+
     static volatile SemaphoreHandle_t timerSemaphore;
     static P3RGB64x32MatrixPanel *singleton;
 };
