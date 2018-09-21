@@ -113,7 +113,7 @@ void P3RGB64x32MatrixPanel::draw() {
   }
   //REG_WRITE(GPIO_OUT_W1TC_REG, (1 << pinCLK));
 
-  REG_WRITE(GPIO_OUT1_W1TS_REG, (1 << pinOE - 32) | (1 << pinLAT - 32));
+  REG_WRITE(GPIO_OUT1_W1TS_REG, (1 << (pinOE - 32)) | (1 << (pinLAT - 32)));
 
   out = ((y & 1) << pinA) | ((y & 2) << (pinB - 1)) |
         ((y & 4) << (pinC - 2)) | ((y & 8) << (pinD - 3));
@@ -121,5 +121,5 @@ void P3RGB64x32MatrixPanel::draw() {
 
   for (int x = 0; x < 8; x++) NOP(); // to wait latch and row switch
 
-  REG_WRITE(GPIO_OUT1_W1TC_REG, (1 << pinOE - 32) | (1 << pinLAT - 32));
+  REG_WRITE(GPIO_OUT1_W1TC_REG, (1 << (pinOE - 32)) | (1 << (pinLAT - 32)));
 }
