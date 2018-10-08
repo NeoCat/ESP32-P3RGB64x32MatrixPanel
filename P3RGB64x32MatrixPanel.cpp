@@ -79,7 +79,7 @@ void P3RGB64x32MatrixPanel::drawPixel(int16_t x, int16_t y, uint16_t color) {
   drawBuffer()[idx] = color;
 }
 
-void P3RGB64x32MatrixPanel::draw() {
+void IRAM_ATTR P3RGB64x32MatrixPanel::draw() {
   static byte cnt = 30;
   static byte y = 15;
   static uint32_t out = 0;
