@@ -48,8 +48,9 @@ One with default pin wiring like:
 +---------+
 ```
 
-The second constructor takes each single pin as argument so that you
-may fully customize the pin wiring.
+The second constructor takes each single pin as argument so that yo umay customize the pin wiring,
+but the pins for LAT and OE must be assigned to IO32 or larger, and other pins must use IO1-31.
+Note that IO only for INPUT or ocuppied by other peripheral devices cannot be used.
 
 The panel must be powered by 5V AC adapter with enough current capacity.
 (Current varies due to how many LED are turned on at the same time.
