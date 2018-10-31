@@ -39,7 +39,7 @@ void P3RGB64x32MatrixPanel::begin() {
   timerSemaphore = xSemaphoreCreateBinary();
   timer = timerBegin(0, 80, true);
   timerAttachInterrupt(timer, &onTimer, true);
-  timerAlarmWrite(timer, 30, true);
+  timerAlarmWrite(timer, 60, true);
   timerAlarmEnable(timer);
 }
 
@@ -81,8 +81,8 @@ uint16_t P3RGB64x32MatrixPanel::colorHSV(long hue, uint8_t sat, uint8_t val) {
 }
 
 void P3RGB64x32MatrixPanel::drawPixel(int16_t x, int16_t y, uint16_t color) {
-  int16_t idx = x + y * 64;
-  if (idx < 0 || idx >= 32 * 64) return;
+  if (x < 0 || x >= 128 || y < 0 || y >= 32) return;
+  int16_t idx = x + y * 128;
   drawBuffer()[idx] = color;
 }
 
@@ -97,13 +97,13 @@ void IRAM_ATTR P3RGB64x32MatrixPanel::draw() {
 
   byte cmp = (cnt >> 4) | ((cnt >> 2) & 0x2) | (cnt & 0x4) | ((cnt << 2) & 0x8) | ((cnt << 4) & 0x10);
 
-  for (int x = 0; x < 64; x++) {
+  for (int x = 0; x < 128; x++) {
     bool r1, b1, g1, r2, g2, b2;
-    uint16_t c = matrixbuff[x + y * 64];
+    uint16_t c = matrixbuff[x + y * 128];
     r1 = (c & 0x1f) > cmp;
     g1 = ((c >>  5) & 0x1f) > cmp;
     b1 = ((c >> 10) & 0x1f) > cmp;
-    c = matrixbuff[x + (y + 16) * 64];
+    c = matrixbuff[x + (y + 16) * 128];
     r2 = (c & 0x1f) > cmp;
     g2 = ((c >>  5) & 0x1f) > cmp;
     b2 = ((c >> 10) & 0x1f) > cmp;

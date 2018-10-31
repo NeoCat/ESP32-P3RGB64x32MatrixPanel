@@ -8,11 +8,11 @@
 class P3RGB64x32MatrixPanel : public Adafruit_GFX {
   public:
     P3RGB64x32MatrixPanel(uint8_t _pinR1, uint8_t _pinG1, uint8_t _pinB1, uint8_t _pinR2, uint8_t _pinG2, uint8_t _pinB2, uint8_t _pinCLK, uint8_t _pinLAT, uint8_t _pinOE, uint8_t _pinA, uint8_t _pinB, uint8_t _pinC, uint8_t _pinD, bool _doubleBuffer = false)
-      : Adafruit_GFX(64, 32), pinR1(_pinR1), pinG1(_pinG1), pinB1(_pinB1), pinR2(_pinR2), pinG2(_pinG2), pinB2(_pinB2), pinCLK(_pinCLK), pinLAT(_pinLAT), pinOE(_pinOE), pinA(_pinA), pinB(_pinB), pinC(_pinC), pinD(_pinD), doubleBuffer(_doubleBuffer) {
+      : Adafruit_GFX(128, 32), pinR1(_pinR1), pinG1(_pinG1), pinB1(_pinB1), pinR2(_pinR2), pinG2(_pinG2), pinB2(_pinB2), pinCLK(_pinCLK), pinLAT(_pinLAT), pinOE(_pinOE), pinA(_pinA), pinB(_pinB), pinC(_pinC), pinD(_pinD), doubleBuffer(_doubleBuffer) {
       initMatrixBuff();
     }
     P3RGB64x32MatrixPanel(bool _doubleBuffer = false)
-      : Adafruit_GFX(64, 32), doubleBuffer(_doubleBuffer) {
+      : Adafruit_GFX(128, 32), doubleBuffer(_doubleBuffer) {
       initMatrixBuff();
     }
     void begin(void);
@@ -28,7 +28,7 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
     }
 
     uint16_t* matrixbuff;
-    std::vector<std::array<uint16_t, 64*32>> _matrixbuff;
+    std::vector<std::array<uint16_t, 128*32>> _matrixbuff;
 
     void copyBuffer() {
       if (!doubleBuffer) return;
