@@ -37,10 +37,17 @@ void P3RGB64x32MatrixPanel::begin() {
   digitalWrite(pinOE, HIGH);
 
   timerSemaphore = xSemaphoreCreateBinary();
-  hw_timer_t* timer = timerBegin(0, 80, true);
+  timer = timerBegin(0, 80, true);
   timerAttachInterrupt(timer, &onTimer, true);
   timerAlarmWrite(timer, 30, true);
   timerAlarmEnable(timer);
+}
+
+void P3RGB64x32MatrixPanel::stop() {
+  if (timer) {
+    timerDetachInterrupt(timer);
+    timerEnd(timer);
+  }
 }
 
 uint16_t P3RGB64x32MatrixPanel::colorHSV(long hue, uint8_t sat, uint8_t val) {

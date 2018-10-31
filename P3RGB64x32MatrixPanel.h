@@ -16,6 +16,7 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
       initMatrixBuff();
     }
     void begin(void);
+    void stop(void);
     virtual void drawPixel(int16_t x, int16_t y, uint16_t color);
 
     uint16_t color444(uint8_t r, uint8_t g, uint8_t b) { return ((r & 0xf) << 1) | ((uint16_t)(g & 0xf) << 6) | ((uint16_t)(b & 0xf) << 11); }
@@ -28,6 +29,14 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
 
     uint16_t* matrixbuff;
     std::vector<std::array<uint16_t, 64*32>> _matrixbuff;
+
+    void copyBuffer() {
+      if (!doubleBuffer) return;
+      if (matrixbuff == _matrixbuff[0].data())
+        _matrixbuff[0] = _matrixbuff[1];
+      else
+        _matrixbuff[1] = _matrixbuff[0];
+    }
 
   private:
     void initMatrixBuff() {
@@ -44,6 +53,8 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
       else
         return _matrixbuff[0].data();
     }
+
+    hw_timer_t* timer;
 
     uint8_t pinR1 = 25;
     uint8_t pinG1 = 26;
