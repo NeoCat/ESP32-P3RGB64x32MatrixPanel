@@ -14,7 +14,7 @@ P3RGB64x32MatrixPanel matrix;
 char ssid[] = "****SSID****";
 char pass[] = "**PASSWORD**";
 
-#define TZ (-9*60*60) /*JST*/
+#define TZ (9*60*60) /*JST*/
 
 void setup() {
   Serial.begin(115200);
