@@ -38,13 +38,13 @@ One with default pin wiring like:
 ```
 +---------+   Panel - ESP32 pins
 |  R1 G1  |    R1   - IO25      G1   - IO26
-|  B1 GND |    B1   - IO27
+|  B1 GND |    B1   - IO27      GND  - GND
 |  R2 G2  |    R2   - IO21      G2   - IO22
-|  B2 GND |    B2   - IO23
+|  B2 GND |    B2   - IO23      GND  - GND
 |   A B   |    A    - IO12      B    - IO16
 |   C D   |    C    - IO17      D    - IO18
 | CLK LAT |    CLK  - IO15      LAT  - IO32
-|  OE GND |    OE   - IO33
+|  OE GND |    OE   - IO33      GND  - GND
 +---------+
 ```
 
