@@ -1,7 +1,9 @@
 # Setup
 
+Set up [brew](https://brew.sh) on your Mac
 ```
 brew install imagemagick
+gem install bundler
 bundle install
 ```
 
