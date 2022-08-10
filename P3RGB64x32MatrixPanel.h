@@ -56,21 +56,23 @@ class P3RGB64x32MatrixPanel : public Adafruit_GFX {
 
     hw_timer_t* timer;
 
-    uint8_t pinR1 = 25;
-    uint8_t pinG1 = 26;
-    uint8_t pinB1 = 27;
-    uint8_t pinR2 = 21;
-    uint8_t pinG2 = 22;
-    uint8_t pinB2 = 23;
+    uint8_t pinG1 = 13;
 
-    uint8_t pinCLK = 15;
-    uint8_t pinLAT = 32;
-    uint8_t pinOE = 33;
+    uint8_t pinG2 = 12;
+ 
+  	uint8_t pinB = 14;
+    uint8_t pinD = 27;
+    uint8_t pinLAT = 26;
+ 
 
-    uint8_t pinA = 12;
-    uint8_t pinB = 16;
-    uint8_t pinC = 17;
-    uint8_t pinD = 18;
+  	uint8_t pinR1 = 19;
+    uint8_t pinB1 = 18;
+    uint8_t pinR2 = 5;
+    uint8_t pinB2 = 17;
+    uint8_t pinA = 16;
+    uint8_t pinC = 4;
+    uint8_t pinCLK = 2;
+    uint8_t pinOE = 15;
 
     bool doubleBuffer;
 
